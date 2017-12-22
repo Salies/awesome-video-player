@@ -1,0 +1,233 @@
+:root {
+    --player_color: '';
+    --button_color: '';
+    --res_color: '';
+    --res_b_color: '';
+}
+
+body {
+    background-size: cover;
+    color: #fff;
+    font-family: Arial;
+}
+
+input {
+    cursor: pointer;
+}
+
+.video-input{
+    cursor: default!important;
+    width: 425px;
+    margin: 0 auto;
+    display: block;
+    padding: 7.5px;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    display: block;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.35);
+    width: 100%;
+}   
+
+.container {
+    width: 900px;
+    max-width: 1080px;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wrapper {
+    width: 100%;
+    transition: .3s;
+}
+
+.wrapper:hover {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
+}
+
+.button_player {
+    cursor: pointer;
+    position: absolute;
+    margin-top: 0px;
+}
+
+span {
+    cursor: pointer;
+}
+
+.bar_num {
+    display: none;
+}
+
+.time {
+    position: absolute;
+    bottom: 39px;
+    left: 5px;
+    font-size: 11px;
+    opacity: 0.25;
+    transition: .3s;
+}
+
+.controls {
+    width: calc(100% - 20px);
+    height: 34px;
+    background: var(--player_color);
+    margin-top: -5px;
+    font-size: 20px;
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bar {
+    width: 78.409%;
+    margin-left: 29.5px;
+}
+
+.volume {
+    display: flex;
+    float: right;
+    width: calc(100% - 28px);
+    margin-top: 12px;
+}
+
+.v {
+    float:left;
+    margin-bottom: 3px;
+    margin-right: -10px;
+}
+
+.res_ct {
+    margin-top: -2px;
+    margin-left: -5px;
+    user-select: none;
+}
+
+.res {
+    width: 100px;
+    background: var(--res_b_color);
+    font-size: 14px;
+    position: absolute;
+    bottom: 33px;
+    right: 0;
+    display: none;
+}
+
+.res aside {
+    width: 88.5px;
+    height: 24px;
+    cursor: pointer;
+    padding-left: 12.5px;
+    padding-top: 8px;
+}
+
+.res aside:hover {
+    background: var(--res_color);
+    color: #000;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: var(--button_color);
+    margin-top: -4px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    display: inline-block;
+    height: 38px;
+    padding: 0 30px;
+    color: #555;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 38px;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+    color: #333;
+    border-color: #888;
+    outline: 0;
+}
+
+.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+    color: #FFF;
+    background-color: #33C3F0;
+    border-color: #33C3F0;
+}
+
+.button.button-primary:hover,
+button.button-primary:hover,
+input[type="submit"].button-primary:hover,
+input[type="reset"].button-primary:hover,
+input[type="button"].button-primary:hover,
+.button.button-primary:focus,
+button.button-primary:focus,
+input[type="submit"].button-primary:focus,
+input[type="reset"].button-primary:focus,
+input[type="button"].button-primary:focus {
+    color: #FFF;
+    background-color: #1EAEDB;
+    border-color: #1EAEDB;
+}
