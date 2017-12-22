@@ -21,19 +21,7 @@ input {
     margin: 0 auto;
     display: block;
     padding: 7.5px;
-}
-
-.background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    display: block;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.35);
-    width: 100%;
-}   
+} 
 
 .container {
     width: 900px;

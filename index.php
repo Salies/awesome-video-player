@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,6 @@
     <title>Awesome Video Player</title>
 </head>
 <body>
-<div class="background"></div>
 <div class="container"> <!-- external container for future embedding function -->
     <div class="wrapper">
             <div class="time"><span class="bar_num"></span><span class="timer">-</span> / <span class="duration">-</span></div>
