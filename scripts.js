@@ -28,11 +28,11 @@ img.addEventListener('load', function() {
     }
 
 //setting the colors
-    document.querySelector("html").style.setProperty("--player_color", colors[2]);
+    document.querySelector("html").style.setProperty("--player_color", colors[0]);
     document.querySelector("html").style.setProperty("--button_color", colors[1]);
     document.querySelector("html").style.setProperty("--res_color", colors[4]);
     document.querySelector("html").style.setProperty("--res_b_color", colors[3]);
-    document.querySelector("body").style.setProperty("background", colors[0]);
+    document.querySelector("body").style.setProperty("background", colors[2]);
 });
 
 
