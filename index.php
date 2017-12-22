@@ -52,12 +52,16 @@
     }
     else if (substr($_POST['video'],0, 4) === "http"){
 //if copy-pasted from youtube
-        if(strpos($_POST['video'],'watch?v=')!==false){
+        if(strpos($_POST['video'],'watch?v=')!==false && preg_match('/^[a-zA-Z0-9_-]{11}$/', str_replace("https://www.youtube.com/watch?v=", "", $_POST['video']))==1){
             $id  = str_replace("https://www.youtube.com/watch?v=", "", $_POST['video']);
         }
 //if copy-pasted from youtube's share section
-        else if(strpos($_POST['video'],'youtu.be')!==false){
+        else if(strpos($_POST['video'],'youtu.be')!==false && preg_match('/^[a-zA-Z0-9_-]{11}$/', str_replace("https://youtu.be/", "", $_POST['video']))==1){
             $id  = str_replace("https://youtu.be/", "", $_POST['video']);
+        }
+        else{
+            $id = '4VIteJzGCr8';
+            echo "The provided entry is not a valid YouTube ID, URL or shortened URL";
         }
     }   
 //if copy-pasted directly, valid id
@@ -77,7 +81,7 @@
     echo '<script>var vid="'.$src.'", id="'.$id.'";</script>';
 ?>
 
-<script src="Vibrant.min.js"></script>
+<script src="color-thief.js"></script>
 <script src="scripts.js"></script>
 </body>
 </html>

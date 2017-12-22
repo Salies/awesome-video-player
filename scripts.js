@@ -9,30 +9,55 @@ const bar = document.querySelector(".bar"); //main (time/progress) bar stuff
 const bar_num = document.querySelector(".bar_num");
 
 //==== NEW CODE ====
-//get image from PHP
+//rgtToHsl function by https://github.com/mjackson
+function rgbToHsl(r, g, b){
+    r /= 255, g /= 255, b /= 255;
+    var max = Math.max(r, g, b), min = Math.min(r, g, b);
+    var h, s, l = (max + min) / 2;
+
+    if(max == min){
+        h = s = 0; // achromatic
+    }else{
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch(max){
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+    }
+
+    return [h, s, l];
+}
+
+//create image element
 var img = document.createElement('img');
 img.setAttribute('src', vid);
 
-//prepare array for the colors
-var colors = [];
-
+//watch out for when the image loads, then push info from it
 img.addEventListener('load', function() {
-//get image data
-    var vibrant = new Vibrant(img);
-    var swatches = vibrant.swatches();
-//create array with colors
-    for (var swatch in swatches){
-        if (swatches.hasOwnProperty(swatch) && swatches[swatch]){
-            colors.push(swatches[swatch].getHex());
-        }
+//initialize the api
+    var colorThief = new ColorThief();
+    var c = colorThief.getPalette(img, 8);
+
+    var lights = []; //prepare the array for the hsl convertion
+    for(i=0;i<7;i++){
+        lights.push(rgbToHsl((c[i])[0], (c[i])[1], (c[i])[2]));
+    }
+    lights.sort(function(a, b){return b[2]-a[2]});
+    var colors = []; // prepare the numbers and write them in CSS format
+    for(i=0;i<7;i++){
+        var x = (lights[i])[0], y = (lights[i])[1], z = (lights[i])[2];
+        colors.push(`${x*360},${y*100}%,${z*100}%`);
     }
 
-//setting the colors
-    document.querySelector("html").style.setProperty("--player_color", colors[0]);
-    document.querySelector("html").style.setProperty("--button_color", colors[1]);
-    document.querySelector("html").style.setProperty("--res_color", colors[4]);
-    document.querySelector("html").style.setProperty("--res_b_color", colors[3]);
-    document.querySelector("body").style.setProperty("background", colors[2]);
+//attach the colors
+    document.querySelector("html").style.setProperty("--player_color", 'hsl('+colors[5])+')';
+    document.querySelector("html").style.setProperty("--button_color", 'hsl('+colors[2])+')';
+    document.querySelector("html").style.setProperty("--res_color", 'hsl('+colors[0])+')';
+    document.querySelector("html").style.setProperty("--res_b_color", 'hsl('+colors[6])+')';
+    document.querySelector("body").style.setProperty("background", 'hsl('+colors[4])+')';
 });
 
 
